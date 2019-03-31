@@ -1,4 +1,4 @@
-SITE = http://chengjt.site
+SITE = https://chengjt.site
 
 run:
 	hugo server --buildDrafts

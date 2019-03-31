@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cheng JingTao&#39;s Blog</title>
-    <link>http://chengjt.site/</link>
+    <link>https://chengjt.site/</link>
     <description>Recent content on Cheng JingTao&#39;s Blog</description>
     <generator>Hugo - gohugo.io</generator>
     <language>en</language>
     <contact>jtcheng0616@gmail.com</contact>
     <copyright>&copy; <a href="https://github.com/chengjingtao">Chengjingtao</a> 2017</copyright>
     
-        <atom:link href="http://chengjt.site/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://chengjt.site/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>如何更好的打印日志</title>
-      <link>http://chengjt.site/post/how-to-print-log/</link>
+      <link>https://chengjt.site/post/how-to-print-log/</link>
       <pubDate>Sun, 10 Mar 2019 18:22:39 +0800</pubDate>
       <author>Cheng JingTao</author>
-      <guid>http://chengjt.site/post/how-to-print-log/</guid>
+      <guid>https://chengjt.site/post/how-to-print-log/</guid>
       <description></description>
       
       <content>

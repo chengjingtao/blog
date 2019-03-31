@@ -3,24 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://chengjt.site/post/how-to-print-log/</loc>
+    <loc>https://chengjt.site/post/how-to-print-log/</loc>
     <lastmod>2019-03-10T18:22:39+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://chengjt.site/</loc>
-    <lastmod>2019-03-10T18:22:39+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://chengjt.site/post/</loc>
+    <loc>https://chengjt.site/</loc>
     <lastmod>2019-03-10T18:22:39+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://chengjt.site/tags/</loc>
+    <loc>https://chengjt.site/post/</loc>
+    <lastmod>2019-03-10T18:22:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengjt.site/tags/</loc>
     <priority>0</priority>
   </url>
   
