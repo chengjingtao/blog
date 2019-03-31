@@ -1,0 +1,3 @@
+User-agent: *
+
+Sitemap: http://chengjt.site/sitemap.xml

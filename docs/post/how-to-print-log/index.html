@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>如何更好的打印日志 | Cheng JingTao&#39;s Blog</title>
+
+<meta property='og:title' content='如何更好的打印日志 - Cheng JingTao&#39;s Blog'>
+<meta property='og:description' content='打印时机 如何做到在写代码的时候，对将来输出的日志做到心中有丘壑。
+ 如果当前 子方法的 Action 含义 和 父方法含义基本相同， 则 子方法出现错误时， 父方法调用其时，不需要再次打印 如果要打印重要方法的调用和返回，调用的日志， 在 该方法进入时打印调用， 在方法返回时打印返回。  info日志级别 always 0 , important 3, debug 5, verbose 7, more 9
+Error  发生error 时，使用error级别 发生error 时， 要附带打印当前的上下文数据信息，以便排查。  Always:  对系统产生影响的，且无法恢复的，出现问题需要核对的， 例如删除， 日志级别 为 0 记录重要主行为的发生和结束的结果。 日子级别为0.例如，开始做某个任务，及最终的执行结果。  Important  对系统产生影响的， 例如增加，更新的动作，日志级别3， 也可以酌情为0.  Debug  即将对系统产生影响的，例如 删除之前的提示 Deleting， 日志级别可定为 5。 系统的主要逻辑分支。  Verbose  打印相关执行过程中的上下文数据详情， 例如，http 请求过程中的， 请求内容， 响应结果。 打印执行过程中， 主要逻辑分支外的，非主要分支的方法的执行过程。  日志内容  将重要的动作放在开始，简短清晰。描述当前上下文的语句或者详细内容，放在语句后边。  例如'>
+<meta property='og:url' content='http://chengjt.site/post/how-to-print-log/'>
+<meta property='og:site_name' content='Cheng JingTao&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/59ce089f8fb4da685de81e014a487ecd?s=256'><meta property='article:section' content='Post'><meta property='article:published_time' content='2019-03-10T18:22:39&#43;08:00'/><meta property='article:modified_time' content='2019-03-10T18:22:39&#43;08:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
+
+
+<link href="http://chengjt.site/index.xml" rel="alternate" type="application/rss+xml" title="Cheng JingTao&#39;s Blog" />
+
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='http://chengjt.site/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chengjt.site">
+          <h1 class="title is-4">Cheng JingTao&#39;s Blog</h1>
+        </a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/chengjingtao'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="email" href='mailto:jtcheng0616@gmail.com'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+
+      
+    </nav>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+    </div>
+    <h2 class="subtitle is-6">March 10, 2019</h2>
+    <h1 class="title">如何更好的打印日志</h1>
+    
+    <div class="content">
+      
+
+<h2 id="打印时机">打印时机</h2>
+
+<p>如何做到在写代码的时候，对将来输出的日志做到心中有丘壑。</p>
+
+<ul>
+<li>如果当前 子方法的 Action 含义 和 父方法含义基本相同， 则 子方法出现错误时， 父方法调用其时，不需要再次打印</li>
+<li>如果要打印重要方法的调用和返回，调用的日志， 在 该方法进入时打印调用， 在方法返回时打印返回。</li>
+</ul>
+
+<h2 id="info日志级别">info日志级别</h2>
+
+<p>always 0 , important 3,  debug 5, verbose 7,  more 9</p>
+
+<h3 id="error">Error</h3>
+
+<ul>
+<li>发生error 时，使用error级别</li>
+<li>发生error 时， 要附带打印当前的上下文数据信息，以便排查。</li>
+</ul>
+
+<h3 id="always">Always:</h3>
+
+<ul>
+<li>对系统产生影响的，且无法恢复的，出现问题需要核对的， 例如删除， 日志级别 为 0</li>
+<li>记录重要主行为的发生和结束的结果。 日子级别为0.例如，开始做某个任务，及最终的执行结果。</li>
+</ul>
+
+<h3 id="important">Important</h3>
+
+<ul>
+<li>对系统产生影响的， 例如增加，更新的动作，日志级别3， 也可以酌情为0.</li>
+</ul>
+
+<h3 id="debug">Debug</h3>
+
+<ul>
+<li>即将对系统产生影响的，例如 删除之前的提示 Deleting， 日志级别可定为 5。</li>
+<li>系统的主要逻辑分支。</li>
+</ul>
+
+<h3 id="verbose">Verbose</h3>
+
+<ul>
+<li>打印相关执行过程中的上下文数据详情， 例如，http 请求过程中的， 请求内容， 响应结果。</li>
+<li>打印执行过程中， 主要逻辑分支外的，非主要分支的方法的执行过程。</li>
+</ul>
+
+<h2 id="日志内容">日志内容</h2>
+
+<ul>
+<li>将重要的动作放在开始，简短清晰。描述当前上下文的语句或者详细内容，放在语句后边。</li>
+</ul>
+
+<p>例如</p>
+
+<pre><code>  &quot;Skip namespace 'default',  secretlist=[], binding=xxxx/xxxx  &quot;
+</code></pre>
+
+<ul>
+<li>重要的动作，以大写开头，以 ing 表示进入， 以过去时表示结束。例如</li>
+</ul>
+
+<pre><code>  &quot;Processing 'default/harbor', &quot;
+  &quot;Processed 'defautl/harbor', error: nil, elapsed 52s &quot;
+</code></pre>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+  
+    <div id="show_comments"><a id="load_comments" class="button is-link">Load comments</a></div>
+  
+    <script type="text/javascript">
+      var disqus_shortname = 'shortname';
+      function disqus() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+  
+      
+      var hash = window.location.hash.substr(1);
+      if ((hash.length > 8) && (hash.substring(0, 8) === "comment-")) {
+        disqus();
+        document.getElementById("show_comments").style.display = "none";
+      } else {
+        document.getElementById('load_comments').onclick = function() {
+          disqus();
+          document.getElementById("show_comments").style.display = "none";
+        };
+      }
+  
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/chengjingtao">Chengjingtao</a> 2017</p>
+    
+  </div>
+</section>
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/matomo.example.com\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+  <img src="//matomo.example.com/piwik.php?idsite=1&amp;rec=1" style="border:0" alt="" />
+</noscript>
+
+
+</body>
+</html>
+

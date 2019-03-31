@@ -1,0 +1,57 @@
+baseurl = "https://chengjt.site"
+languageCode = "zh-CN"
+title = "Cheng JingTao's Blog"
+theme = "kiss"
+copyright = "&copy; <a href=\"https://github.com/chengjingtao\">Chengjingtao</a> 2017"
+disqusShortname = "shortname"
+googleAnalytics = ""
+Paginate = 10 # Number of posts per page
+enableRobotsTXT = true
+publishDir = "docs"
+
+[params.rss] # Adding this tag enables RSS feed
+includeContent = true # Includes whole content in rss
+authorName = "Cheng JingTao" # Author full name
+authorEmail = "jtcheng0616@gmail.com" # Author email
+
+[params.assets]
+customCSS = ["css/custom.css"]
+
+[params.info]
+adsense = "" # Adsense ID (ID only, without ca-pub-)
+enableSocial = true # Adds OpenGraph and Twitter cards
+homeTitle = "" # Title for home page
+poweredby = false # Adds powered by hugo and kiss below Copyright
+related = true # Includes related articles at the bottom of the article
+
+[params.features]
+disqusOnDemand = true  # Load Disqus comments on click
+
+
+[params.opengraph.facebook]
+admins = [] # array of Facebook IDs
+appID = ""
+pageID = ""
+
+[params.opengraph.twitter]
+page = "" # Twitter Page username. If not set, params.social.twitter will be used.
+
+[params.social]
+github = "chengjingtao"
+email = "jtcheng0616@gmail.com"
+instagram = ""
+codepen = ""
+rss = "index.xml" # Add this to show RSS button in social.
+
+[params.social.config]
+platforms = ["github","email"]
+
+[params.matomoAnalytics]
+siteID = 1
+rootURL = "//matomo.example.com/"
+
+[taxonomies]
+tag ="tags"
+
+[blackfriday]
+hrefTargetBlank = true
