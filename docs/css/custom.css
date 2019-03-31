@@ -4,3 +4,9 @@ body{
 .container {
   max-width: 1200px;
 }
+.content h1{
+  margin-top: 20px;
+  color: black;
+}
+
+

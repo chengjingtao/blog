@@ -7,10 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/chengjingtao&#34;&gt;Chengjingtao&lt;/a&gt; 2017</copyright>
-    <lastBuildDate>Sun, 10 Mar 2019 18:22:39 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 31 Mar 2019 11:41:59 +0800</lastBuildDate>
     
 	<atom:link href="https://chengjt.site/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Translate Using Go Modules</title>
+      <link>https://chengjt.site/post/translate-using-go-modules/</link>
+      <pubDate>Sun, 31 Mar 2019 11:41:59 +0800</pubDate>
+      
+      <guid>https://chengjt.site/post/translate-using-go-modules/</guid>
+      <description>原文链接 Go Blog Using Go Modules
+介绍 Go 1.11 和 Go1.12 版本中已经包含了对 Golang依赖管理modules的基本支持, 它将会使依赖的版本信息更加明确，并且更容易管理。 这篇文章将会对其进行一个入门级别的基本操作介绍。 下篇文章将会介绍如何releasing modules.
+一个Module 将会是一系列 Go packages 的合集。在go packages的目录树的根目录，会有一个 go.mod 文件。go.mode 文件中定义了 module的 module path。 这个module path 将会用来作为package导入的根路径。每个依赖包都会提供一个 module path和 Semantic Version。
+在 Go 1.11 中， 如果在 ${GOPATH}/src 目录以外，执行go command， 如果当前目录或者父目录存在 go.mode文件，则将会启用 go module。 如果在 ${GOPATH}/src 下， 为了保证兼容性，go command 将会仍然运行在 旧的 GOPATH的模式下， 即使找到了相应的 go.mod 文件。 详细可以查看 go command文档 从 Go1.13 开始， Go Module 模式将会在所有情景下被默认启用。
+本文 将会从 平时的 Go 开发中，最常见的使用 modules 的以下几种操作进行介绍： - 创建一个新的 module - 添加依赖 - 升级依赖 - 增加一个新的主版本依赖 - 更新依赖的主版本。 - 移除无用的依赖</description>
+    </item>
     
     <item>
       <title>如何更好的打印日志</title>
